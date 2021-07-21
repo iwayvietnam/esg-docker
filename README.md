@@ -5,7 +5,7 @@ Check out the prebuilt image on Docker Hub: https://hub.docker.com/r/iwayvietnam
 ## Requirement
 A mail server already exists and permit connection port 25 from esg to mail server
 
-### How to start a new Email Gateway container from prebuilt Docker image
+### How to start a new Email Security Gateway container from prebuilt Docker image
 Assumption: A mail server already exists with ip 192.168.100.23 and domain is iwaytest2.com, ...
 
 ```bash
