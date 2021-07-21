@@ -38,7 +38,7 @@ $ git clone https://github.com/iwayvietnam/esg-docker.git && cd esg-docker
 
 ##### Build Zimbra a new docker image
 ```bash
-$ docker build --rm -t iwayvietnam/esg-docker .
+$ docker build --rm -t iwayvietnam/esg .
 ```
 
 ### How to start with Docker compose
