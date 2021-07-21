@@ -16,7 +16,7 @@
 version: '3.2'
 
 services:
-  esg-docker:
+  esg:
     container_name: esg
     image: iwayvietnam/esg
     hostname: esg.iwaytest2.com  
@@ -38,10 +38,10 @@ services:
       - "./config/postfix:/etc/postfix"
       - "./logs:/var/log/"
     networks:
-        esg-docker:
+        esg:
           ipv4_address: 20.0.0.4
 networks:
-  esg-docker:
+  esg:
     driver: bridge
     ipam:
      config:
