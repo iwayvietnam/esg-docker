@@ -80,7 +80,7 @@ sleep 10
 yum install "perl(DBD::mysql)" -y
 
 #
-####Install and config Postfix
+###Install and config Postfix
 
 #install postfix 3
 yum -y install postfix
@@ -203,7 +203,6 @@ rsync -av /opt/MailWatch/MailScanner_perl_scripts/MailWatchConf.pm /usr/share/Ma
 yum -y install clamav-data
 freshclam
 sed -i "s|^\#TCPSocket 3310|TCPSocket 3310|"  /etc/clamd.d/scan.conf
-#sed -i "s|^\#LocalSocket /var/run/clamd.scan/clamd.sock|LocalSocket /var/run/clamd.scan/clamd.sock|" /etc/clamd.d/scan.conf
 sed -i "s|^\#LogFile /var/log/clamd.scan|LogFile /var/log/clamd.scan|" /etc/clamd.d/scan.conf
 sed -i "s|^\Clamd Socket = /var/run/clamd.scan/clamd.sock|#Clamd Socket = /var/run/clamd.scan/clamd.sock|" /etc/MailScanner/MailScanner.conf
 
