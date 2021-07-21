@@ -22,8 +22,11 @@ $ docker run --name esg --hostname esg.iwaytest2.com -d -it \
 (and WAIT... 35-40 minutes)
 
 Login GUI MailWatch:
+
   URL: http://esg.iwaytest2.com:90
+  
   User: admin
+  
   Password: Mailwatchpass123
   
 ### How to build a new Docker image
