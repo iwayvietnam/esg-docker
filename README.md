@@ -19,6 +19,7 @@ $ docker run --name esg --hostname esg.iwaytest2.com -d -it \
 -e MAILWATCHPASS=Mailwatchpass123 -e MAILBACKEND_HOST=192.168.100.23 iwayvietnam/esg-docker
 ```
 (assumption: A mail server already exists with ip 192.168.100.23 and domain is iwaytest2.com)
+
 (and WAIT... 35-40 minutes)
 
 Login GUI MailWatch: User= admin, Password= Mailwatchpass123
