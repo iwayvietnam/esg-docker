@@ -39,7 +39,7 @@ services:
       - "./logs:/var/log/"
     networks:
         esg-docker:
-          ipv4_address: 20.0.0.2
+          ipv4_address: 20.0.0.4
 networks:
   esg-docker:
     driver: bridge
