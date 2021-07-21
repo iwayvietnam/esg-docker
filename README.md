@@ -21,8 +21,11 @@ $ docker run --name esg --hostname esg.iwaytest2.com -d -it \
 ```
 (and WAIT... 35-40 minutes)
 
-Login GUI MailWatch: User= admin, Password= Mailwatchpass123
-
+Login GUI MailWatch:
+  URL: http://esg.iwaytest2.com:90
+  User: admin
+  Password: Mailwatchpass123
+  
 ### How to build a new Docker image
 ##### Firstly, of course, install Docker and setup to manage Docker as a non-root user
 See: https://docs.docker.com/engine/install/
@@ -54,7 +57,10 @@ $ docker-compose up -d
 ```
 (and WAIT... 35-40 minutes)
 
-Login GUI MailWatch: User= admin, Password= Mailwatchpass123
+Login GUI MailWatch:
+  URL: http://esg.iwaytest2.com:90
+  User: admin
+  Password: Mailwatchpass123
 
 ##### Command check status
 ```bash
