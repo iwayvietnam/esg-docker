@@ -33,7 +33,7 @@ $ docker pull rockylinux/rockylinux
 ```
 ##### Checkout this git repo
 ```bash
-* $ git clone https://github.com/iwayvietnam/esg-docker.git && cd esg-docker
+$ git clone https://github.com/iwayvietnam/esg-docker.git && cd esg-docker
 ```
 
 ##### Build Zimbra a new docker image
@@ -44,7 +44,7 @@ $ docker build --rm -t iwayvietnam/esg-docker .
 ### How to start with Docker compose
 ##### Require : Install docker-compose for your server
 ```bash
-* $ git clone https://github.com/iwayvietnam/esg-docker.git && cd esg-docker
+$ git clone https://github.com/iwayvietnam/esg-docker.git && cd esg-docker
 ```
 ##### Edit variable MAILBACKEND_HOST then run docker-compose
 ```bash
