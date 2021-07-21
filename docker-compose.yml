@@ -1,0 +1,48 @@
+#<one line to give the program's name and a brief idea of what it does.>
+#    Copyright (C) 2021 iWayVietnam
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+version: '3.2'
+
+services:
+  esg-docker:
+    container_name: esg
+    image: iwayvietnam/esg
+    hostname: esg.iwaytest2.com  
+    restart: always
+    environment:
+      - DOMAIN=iwaytest2.com
+      - HOSTNAME=esg.iwaytest2.com
+      - POLICYDPASS=Policydpass123
+      - MAILSCANNERPASS=Mailscannerpass123
+      - MAILWATCHPASS=Mailwatchpass123
+      - MAILBACKEND_HOST=192.168.100.23
+    ports:
+      - "25:25"
+      - "7790:7790"
+      - "90:90"
+    volumes:
+      - "./databases:/var/lib/mysql"
+      - "./config/mailscanner:/etc/MailScanner"
+      - "./config/postfix:/etc/postfix"
+      - "./logs:/var/log/"
+    networks:
+        esg-docker:
+          ipv4_address: 20.0.0.4
+networks:
+  esg-docker:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 20.0.0.0/24

@@ -1,0 +1,10 @@
+/^Received:/ HOLD
+# Spoofing in DisplayName
+/^FROM:.*domain.com.*\<.*/ REJECT
+# # By Subject
+/^Subject:.*Subject Spam/        REJECT
+/^Subject:.*Goi trong Cong an Nhan dan Viet Nam/        REJECT
+/^Subject:.*QUOTE YOUR BEST PRICE/      REJECT
+/^Subject:.*\Re-Validate.*/     REJECT
+/^Subject:.*\Zimbra quota.*/     REJECT
+/^Subject:.*\Mail Account Security.*/     REJECT

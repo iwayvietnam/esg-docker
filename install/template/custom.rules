@@ -1,0 +1,6 @@
+# no will not check scan
+# yes will check scan
+#   To:       bad.customer.com  no
+#   From:     ignore.domain.com no
+From:     *@domain.com       no
+FromOrTo: default           yes

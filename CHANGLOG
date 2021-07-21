@@ -1,0 +1,4 @@
+##### v0.1 - the initial version:
++ Build a Docker image
++ Run a new Email gateway docker container
++ Add docker-compose capacibility 

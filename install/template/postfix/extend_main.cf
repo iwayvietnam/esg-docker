@@ -1,0 +1,52 @@
+# Block spam via header checks
+header_checks = regexp:/etc/postfix/header_checks
+
+# Accept local domain
+relay_domains = hash:/etc/postfix/local_domains
+
+# Block spam via body checks
+body_checks = regexp:/etc/postfix/body_checks
+
+# Postscreen Whitelisting
+# Exclude broken clients by whitelisting. Clients in mynetworks should always be whitelisted.
+postscreen_access_list = permit_mynetworks,
+		cidr:/etc/postfix/postscreen_access.cidr
+postscreen_blacklist_action = enforce
+
+# Postscreen DNSBL Sites
+# Specify a list of domain=filter*weight entries, separated by comma or whitespace
+# References: http://www.postfix.org/postconf.5.html#postscreen_dnsbl_sites
+postscreen_dnsbl_threshold = 2
+postscreen_dnsbl_sites =
+		zen.spamhaus.org*2
+		b.barracudacentral.org*2
+		cbl.abuseat.org*2
+		bl.spamcop.net*2
+		all.s5h.net*2
+postscreen_dnsbl_action = enforce
+#postscreen_dnsbl_action        = drop
+postscreen_dnsbl_ttl    = 1h
+
+# Postscreen Pre-greeting Tests
+postscreen_greet_banner = $smtpd_banner
+postscreen_greet_wait = 6s
+#postscreen_greet_action = enforce
+postscreen_greet_action = drop
+
+# Message Site Limit
+message_size_limit = 24657920
+
+# Check Sender Address
+smtpd_recipient_restrictions = check_policy_service inet:127.0.0.1:10031, permit_mynetworks, check_sender_access hash:/etc/postfix/sender_access
+
+#smtpd_recipient_restrictions = permit_mynetworks, check_sender_access hash:/etc/postfix/sender_access
+#quota via policy
+smtpd_end_of_data_restrictions = check_policy_service inet:127.0.0.1:10031
+#transport
+transport_maps = hash:/etc/postfix/transport
+# Stop email flooding attacks (postscreen-level)
+smtpd_client_connection_count_limit = 2
+postscreen_client_connection_count_limit = $smtpd_client_connection_count_limit
+# Stop email flooding attacks (smtpd-level)
+anvil_rate_time_unit = 1s
+smtpd_client_message_rate_limit=1
