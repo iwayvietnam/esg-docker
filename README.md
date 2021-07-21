@@ -6,7 +6,8 @@ Check out the prebuilt image on Docker Hub: https://hub.docker.com/r/iwayvietnam
 A mail server already exists and permit connection port 25 from esg to mail server
 
 ### How to start a new Email Gateway container from prebuilt Docker image
-Change MAILBACKEND_HOST to IP mail backend
+Assumption: A mail server already exists with ip 192.168.100.23 and domain is iwaytest2.com
+
 ```bash
 $ docker run --name esg --hostname esg.iwaytest2.com -d -it \
 -p 25:25/tcp -p 90:90/tcp -p 7790:7790/tcp \
@@ -18,8 +19,6 @@ $ docker run --name esg --hostname esg.iwaytest2.com -d -it \
 -e POLICYDPASS=Policydpass123 -e MAILSCANNERPASS=Mailscannerpass123 \
 -e MAILWATCHPASS=Mailwatchpass123 -e MAILBACKEND_HOST=192.168.100.23 iwayvietnam/esg-docker
 ```
-(assumption: A mail server already exists with ip 192.168.100.23 and domain is iwaytest2.com)
-
 (and WAIT... 35-40 minutes)
 
 Login GUI MailWatch: User= admin, Password= Mailwatchpass123
