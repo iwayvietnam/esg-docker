@@ -17,7 +17,7 @@ $ docker run --name esg --hostname esg.iwaytest2.com -d -it \
 -v /opt/esg-docker/logs:/var/log/ \
 -e DOMAIN=iwaytest2.com -e HOSTNAME=esg.iwaytest2.com \
 -e POLICYDPASS=Policydpass123 -e MAILSCANNERPASS=Mailscannerpass123 \
--e MAILWATCHPASS=Mailwatchpass123 -e MAILBACKEND_HOST=192.168.100.23 iwayvietnam/esg-docker
+-e MAILWATCHPASS=Mailwatchpass123 -e MAILBACKEND_HOST=192.168.100.23 iwayvietnam/esg
 ```
 (and WAIT... 35-40 minutes)
 
