@@ -36,6 +36,7 @@ RUN yum update -y && yum install epel-release -y && yum install -y \
   which \
   sudo \
   htop \
+  rsync \
   gcc 
 
 RUN cpan -i Encoding::FixLatin && cpan -i Digest::SHA1

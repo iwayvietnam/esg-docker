@@ -38,7 +38,8 @@ chown -R nginx. /var/lib/php/session
 
 #Install Mariadb and start
 yum install mariadb-server mariadb -y
-nohup sudo -u mysql /sbin/mariadbd &
+/usr/libexec/mysql-prepare-db-dir %n
+nohup sudo -u mysql /usr/libexec/mysqld --basedir=/usr &
 
 ##Download và config Mailwatch
 cd /opt/ && wget https://github.com/mailwatch/MailWatch/archive/refs/tags/v1.2.17.zip
