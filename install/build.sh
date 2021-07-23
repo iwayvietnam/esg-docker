@@ -36,8 +36,9 @@ sed -i "s|^\listen.acl_users = apache,nginx|;listen.acl_users = apache,nginx|" /
 mkdir -p /run/php-fpm/
 chown -R nginx. /var/lib/php/session
 
-#Mariadb
+#Install Mariadb and start
 yum install mariadb-server mariadb -y
+nohup sudo -u mysql /sbin/mariadbd &
 
 ##Download và config Mailwatch
 cd /opt/ && wget https://github.com/mailwatch/MailWatch/archive/refs/tags/v1.2.17.zip
