@@ -23,9 +23,8 @@ cp -vp /opt/template/nginx/mailwatch.conf /etc/nginx/conf.d/
 cp -vp /opt/template/nginx/policyd.conf /etc/nginx/conf.d/
 sed -i "s|domain.com|$DOMAIN|" /etc/nginx/conf.d/mailwatch.conf
 sed -i "s|domain.com|$DOMAIN|" /etc/nginx/conf.d/policyd.conf
+
 #php-fpm
-yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
-yum module enable php:remi-7.4 -y
 yum install php php-fpm php-gd php-json php-mbstring php-mysqlnd php-xml php-xmlrpc php-opcache php-curl php-pecl-zip -y
 cp -vp /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf.bak
 sed -i "s|^\user = apache|user = nginx|" /etc/php-fpm.d/www.conf && \
@@ -37,19 +36,10 @@ sed -i "s|^\listen.acl_users = apache,nginx|;listen.acl_users = apache,nginx|" /
 mkdir -p /run/php-fpm/
 chown -R nginx. /var/lib/php/session
 
-sleep 10
 #Mariadb
+yum install mariadb-server mariadb -y
 
-wget https://downloads.mariadb.com/MariaDB/mariadb_repo_setup
-chmod +x mariadb_repo_setup
-./mariadb_repo_setup
-yum install MariaDB-server MariaDB-client -y
-nohup sudo -u mysql /sbin/mariadbd &
-rm -rf mariadb_repo_setup
-
-sleep 10
 ##Download và config Mailwatch
-
 cd /opt/ && wget https://github.com/mailwatch/MailWatch/archive/refs/tags/v1.2.17.zip
 unzip v1.2.17.zip
 rm v1.2.17.zip
