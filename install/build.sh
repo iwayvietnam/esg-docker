@@ -162,7 +162,7 @@ sed -i "s|^\# bayes_file_mode 0770|bayes_file_mode 0664|"  /etc/MailScanner/spam
 mkdir /etc/MailScanner/bayes
 chown root:nginx /etc/MailScanner/bayes
 chmod g+rws /etc/MailScanner/bayes
-/bin/bash /opt/template/bayes/bayes_db.sh
+unzip /opt/template/bayes/bayes.zip -d /opt/template/bayes/
 sa-learn --restore /opt/template/bayes/bayes.txt
 sa-update
 sa-learn --sync
