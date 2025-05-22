@@ -15,7 +15,8 @@ sed -i 's|StateFile="imjournal.state"|#StateFile="imjournal.state"|g' /etc/rsysl
 rsyslogd
 
 #
-###Install Mailwatch
+###Install MailWatch
+MailWatchVersion="1.2.23"
 ##Install Nginx, php-fpm, mariadb
 #nginx
 yum install nginx -y
@@ -42,10 +43,10 @@ yum install mariadb-server mariadb -y
 nohup sudo -u mysql /usr/libexec/mysqld --basedir=/usr &
 
 ##Download và config Mailwatch
-cd /opt/ && wget https://github.com/mailwatch/MailWatch/archive/refs/tags/v1.2.17.zip
-unzip v1.2.17.zip
-rm v1.2.17.zip
-mv MailWatch-1.2.17 MailWatch
+cd /opt/ && wget https://github.com/mailwatch/MailWatch/archive/refs/tags/v$MailWatchVersion.zip
+unzip v$MailWatchVersion.zip
+rm v$MailWatchVersion.zip
+mv MailWatch-$MailWatchVersion MailWatch
 sed -i "s|512|255|g" /opt/MailWatch/create.sql
 
 cd /opt/MailWatch/ && mysql < create.sql
@@ -110,12 +111,13 @@ sleep 10
 
 #
 ###MailScanner
+MailScannerVersion="5.5.3-2"
 yum install subscription-manager -y
 yum config-manager --set-enabled powertools
 yum install -y perl-Cache-FastMmap perl-Config-IniFiles perl-Net-Server
-wget https://github.com/MailScanner/v5/releases/download/5.3.4-3/MailScanner-5.3.4-3.rhel.noarch.rpm && \
-yum localinstall MailScanner-5.3.4-3.rhel.noarch.rpm -y
-rm -rf MailScanner-5.3.4-3.rhel.noarch.rpm
+wget https://github.com/MailScanner/v5/releases/download/$MailScannerVersion/MailScanner-$MailScannerVersion.rhel.noarch.rpm && \
+yum localinstall MailScanner-$MailScannerVersion.rhel.noarch.rpm -y
+rm -rf MailScanner-$MailScannerVersion.rhel.noarch.rpm
 /usr/sbin/ms-configure --MTA=postfix --installEPEL=Y --installPowerTools=Y --installClamav=Y --configClamav=Y --installTNEF=Y --installUnrar=Y --installCPAN=Y --installDf=Y --SELPermissive=N --ignoreDeps=Y --ramdiskSize=1024
 
 sleep 10

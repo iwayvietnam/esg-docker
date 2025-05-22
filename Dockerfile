@@ -19,7 +19,7 @@
 # Based on Rocky Linux 8
 #################################################################
 FROM rockylinux/rockylinux
-MAINTAINER Nguyen Van Hieu <ngvanhieu112233@gmail.com>
+MAINTAINER Truong Anh Tuan <tuanta@iwayvietnam.com>
 
 RUN yum update -y && yum install epel-release -y && yum install -y \
   perl \
@@ -28,7 +28,7 @@ RUN yum update -y && yum install epel-release -y && yum install -y \
   openssh-clients \
   bind-utils \
   rsyslog \
-  wget\
+  wget \
   telnet\
   unzip \
   cpan \
